@@ -576,5 +576,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5892795136573116936, guid: 02c4194ac08984228bd51da30e57fd16,
     type: 3}
-  bulletSpeed: 2
-  shootPoint: {x: 0, y: 0}

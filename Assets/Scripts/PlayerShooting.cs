@@ -9,6 +9,8 @@ public class PlayerShooting : MonoBehaviour
 
 	private Player player;
 
+	private AudioManager audioManager;
+
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Space)) ShootLove();
@@ -17,21 +19,26 @@ public class PlayerShooting : MonoBehaviour
 	private void Start()
 	{
 		player = gameObject.GetComponent<Player>();
+		audioManager = FindObjectOfType<AudioManager>();
 	}
 
 	void ShootLove()
 	{
-		Debug.Log(player.Movement.x);
-		Debug.Log(player.Movement.y);
+		Vector3 shootingTarget;
+
+		if (Math.Abs(player.Movement.magnitude) < 0.01) shootingTarget = 0.5f * Vector2.down;
+		else shootingTarget = 0.5f * player.Movement;
 
 		var heartBullet = Instantiate(
 			bulletPrefab,
-			transform.position + new Vector3(player.Movement.x, player.Movement.y, 0),
+			transform.position + new Vector3(shootingTarget.x, shootingTarget.y, 0),
 			Quaternion.identity);
 		heartBullet.transform.parent = transform;
 
 		var bulletRigidbody = heartBullet.GetComponent<Rigidbody2D>();
 
-		bulletRigidbody.AddForce(20 * player.Movement);
+		bulletRigidbody.AddForce(20 * shootingTarget);
+
+		audioManager.Play("LoveShot");
 	}
 }

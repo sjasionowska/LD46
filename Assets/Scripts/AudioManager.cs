@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
             s.Source.clip = s.Clip;
             s.Source.volume = s.Volume;
             s.Source.loop = s.Loop;
+            s.Source.playOnAwake = false;
         }
     }
 
