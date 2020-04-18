@@ -1925,7 +1925,12 @@ MonoBehaviour:
     _pitch: 1
     _loop: 0
   - _name: LoveShot
-    _clip: {fileID: 8300000, guid: de1e71209bdf5d4429085622c735a7b6, type: 3}
+    _clip: {fileID: 8300000, guid: 6873602e4907b7747904d0c7dee8d766, type: 3}
+    _volume: 0.7
+    _pitch: 1
+    _loop: 0
+  - _name: Scream1
+    _clip: {fileID: 8300000, guid: 7766399f30266b74d9ce459df3db0bee, type: 3}
     _volume: 0.7
     _pitch: 1
     _loop: 0

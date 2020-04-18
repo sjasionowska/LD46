@@ -18,6 +18,9 @@ public class Enemy : MonoBehaviour
 	[SerializeField]
 	private float distanceNecessaryToAttack = 4f;
 
+	[SerializeField]
+	private GameObject screamBulletPrefab;
+
 	private float attackDamage = 1f;
 
 	private Vector2 targetPosition;
@@ -34,14 +37,14 @@ public class Enemy : MonoBehaviour
 
 	private GameObject targetPlayer;
 
-	private AudioSource audioSource;
+	private AudioManager audioManager;
 
 	private void Start()
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
-		audioSource = GetComponent<AudioSource>();
 
 		targetPlayer = GameObject.FindGameObjectWithTag("Player");
+		audioManager = FindObjectOfType<AudioManager>();
 
 		StartCoroutine(ChangeTargetPositionCoroutine());
 	}
@@ -96,11 +99,38 @@ public class Enemy : MonoBehaviour
 
 		var distance = (targetPlayer.transform.position - transform.position).magnitude;
 
-		if (distance > attackDistance) return;
+		if (distance > attackDistance)
+		{
+			StopAllCoroutines();
+			StartCoroutine(ChangeTargetPositionCoroutine());
+			
+			return;
+		}
 
-		// Debug.Log("attack " + Time.deltaTime);
+		StartCoroutine(ShootScream());
+	}
 
-		// targetPlayer.GetComponent<Entity>().Health -= AttackDamage * Time.deltaTime;
+	private IEnumerator ShootScream()
+	{
+		while (true)
+		{
+			Vector3 shootingTarget;
+
+			shootingTarget = Vector3.Normalize(targetPlayer.transform.position);
+
+			var screamBullet = Instantiate(
+				screamBulletPrefab,
+				transform.position + new Vector3(shootingTarget.x, shootingTarget.y, 0),
+				Quaternion.identity);
+			screamBullet.transform.parent = transform;
+
+			var screamBulletRigidbody = screamBullet.GetComponent<Rigidbody2D>();
+
+			screamBulletRigidbody.AddForce(20 * shootingTarget);
+
+			audioManager.Play("Scream1");
+			yield return new WaitForSeconds(5f);
+		}
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)

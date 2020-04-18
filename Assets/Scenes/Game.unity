@@ -298,6 +298,8 @@ MonoBehaviour:
   speed: 0.6
   attackDistance: 2
   distanceNecessaryToAttack: 4
+  screamBulletPrefab: {fileID: 5892795136573116936, guid: 6d8ccdee5ac954ab697221cfa4a0e40f,
+    type: 3}
 --- !u!212 &1210566356
 SpriteRenderer:
   m_ObjectHideFlags: 0
