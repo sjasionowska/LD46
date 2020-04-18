@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
 using UnityEngine;
+
+using Vector2 = UnityEngine.Vector2;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -21,6 +24,11 @@ public class Player : MonoBehaviour
 #pragma warning restore 108,114
 
 	private Vector2 movement;
+
+	public Vector2 Movement
+	{
+		get => movement;
+	}
 
 	private float currentSpeed;
 
