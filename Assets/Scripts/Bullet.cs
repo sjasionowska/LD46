@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-	private float Time = 2f;
+	private float Time = 1f;
 
 	private void Start ()
 	{

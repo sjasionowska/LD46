@@ -7,6 +7,7 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DeadMenu.cs" t="Include" />
         <e p="Fonts" t="Include">
           <e p="SIL Open Font License.txt" t="Include" />
         </e>
@@ -15,6 +16,7 @@
           <e p="AudioManager.cs" t="Include" />
           <e p="Bullet.cs" t="Include" />
           <e p="ButtonSound.cs" t="Include" />
+          <e p="CoffeeShopCollider.cs" t="Include" />
           <e p="Crosshair.cs" t="Include" />
           <e p="EndMenu.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
