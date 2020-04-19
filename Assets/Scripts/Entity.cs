@@ -19,6 +19,12 @@ public class Entity : MonoBehaviour
 
 	private bool thisIsEnemy;
 
+	private GameManager gameManager;
+
+	private GameObject canvas;
+
+	private DeadMenu deadMenu;
+
 	public int Health
 	{
 		get { return health; }
@@ -45,20 +51,29 @@ public class Entity : MonoBehaviour
 					parent.RemoveEnemy(this.gameObject);
 					Destroy(gameObject);
 				}
+
+				else
+				{
+					deadMenu.ShowDeadMenu();
+				}
 			}
 		}
+	}
+
+	private void Start()
+	{
+		gameManager = FindObjectOfType<GameManager>();
+		canvas = GameObject.FindWithTag("Canvas");
+		deadMenu = canvas.GetComponent<DeadMenu>();
+
+		Health = initialHealth;
+		thisIsEnemy = gameObject.CompareTag("Enemy");
+
+		if (thisIsEnemy) parent = gameObject.transform.parent.gameObject.GetComponent<EnemySpawner>();
 	}
 
 	public void GetHurt()
 	{
 		Health--;
-	}
-
-	private void Start()
-	{
-		Health = initialHealth;
-		thisIsEnemy = gameObject.CompareTag("Enemy");
-
-		if (thisIsEnemy) parent = gameObject.transform.parent.gameObject.GetComponent<EnemySpawner>();
 	}
 }

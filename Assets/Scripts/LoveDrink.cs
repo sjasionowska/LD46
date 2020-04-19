@@ -20,7 +20,6 @@ public class LoveDrink : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			Debug.Log("OnCollisionEnter");
 			canvas.SetActive(true);
 		}
 	}
@@ -29,8 +28,6 @@ public class LoveDrink : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			Debug.Log("OnCollisionExit");
-
 			canvas.SetActive(false);
 		}
 	}

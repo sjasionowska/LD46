@@ -19,6 +19,12 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private float runningSpeed = 3f;
 
+	[SerializeField]
+	private GameObject canvas;
+
+	[SerializeField]
+	private GameObject coffeeCanvas;
+
 	private Animator animator;
 
 	private Entity entity;
@@ -35,8 +41,7 @@ public class Player : MonoBehaviour
 
 	private float yDirection;
 
-	// TODO
-	// private GameManager gameManager;
+	private GameManager gameManager;
 
 	public Vector2 Movement
 	{
@@ -65,9 +70,8 @@ public class Player : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		entity = GetComponent<Entity>();
-		
-		// TODO enable
-		// gameManager = FindObjectOfType<GameManager>();
+
+		gameManager = FindObjectOfType<GameManager>();
 	}
 
 	private void Update()
@@ -106,24 +110,21 @@ public class Player : MonoBehaviour
 			entity.GetHurt();
 		}
 	}
-	
+
 	private void OnCollisionStay2D(Collision2D other)
 	{
-		
-		
-		if(other.gameObject.CompareTag("CoffeeShop"))
-		{
-			
+		if (other.gameObject.CompareTag("CoffeeShop"))
 			if (Input.GetKeyDown(KeyCode.E))
-			{
-				// TODO: enable gameManager!!!
-				// if (gameManager.GameWon)
-				// {
-				// 	WinGame();
-				// }
-			}
+				if (gameManager.GameWon)
+				{
+					WinGame();
+				}
+	}
 
-		}
+	private void WinGame()
+	{
+		canvas.GetComponent<EndMenu>().ShowEndMenu();
+		coffeeCanvas.SetActive(false);
 	}
 
 	// private void Move()

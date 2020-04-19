@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
 	private List<Vector3> enemiesCoordinates;
 
 	private List<GameObject> enemiesObjects;
+	
 
 	public event Action<int> EnemiesCountChanged;
 

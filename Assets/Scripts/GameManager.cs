@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,16 +8,22 @@ public class GameManager : MonoBehaviour
     public bool GameWon { get; set; } = false;
     public bool IsPaused { get; private set; } = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private EnemySpawner enemySpawner;
+
+    private void Awake()
     {
-        
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.AllEnemiesDefeated += SetGameToWon;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        enemySpawner.AllEnemiesDefeated -= SetGameToWon;
+    }
+
+    private void SetGameToWon()
+    {
+        GameWon = true;
     }
 
     public void Run()

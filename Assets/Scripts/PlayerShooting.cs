@@ -66,8 +66,7 @@ public class PlayerShooting : MonoBehaviour
 
 		Bullets--;
 
-		// TODO: Turn on the sound!
-		// audioManager.Play("LoveShot");
+		audioManager.Play("LoveShot");
 	}
 
 	public void CollectBullets()

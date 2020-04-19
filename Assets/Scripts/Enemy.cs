@@ -41,6 +41,11 @@ public class Enemy : MonoBehaviour
 
 	private Entity entity;
 
+	private List<string> sounds = new List<string>()
+	{
+		"Scream1", "Scream2", "Scream3", "Scream4"
+	};
+
 #pragma warning disable 108,114
 
 	// ReSharper disable once IdentifierTypo
@@ -167,8 +172,8 @@ public class Enemy : MonoBehaviour
 
 			screamBulletRigidbody.AddForce(bulletSpeed * shootingTarget);
 
-			// TODO: Turn on the sound!
-			// audioManager.Play("Scream1");
+			var soundName = sounds[Random.Range(0, sounds.Count - 1)];
+			audioManager.Play(soundName);
 
 			// ReSharper disable once CompareOfFloatsByEqualityOperator
 			if (attackFrequency == 0) attackFrequency = 1;

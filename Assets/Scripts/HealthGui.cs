@@ -55,7 +55,7 @@ public class HealthGui : MonoBehaviour
 	{
 		foreach (var life in peaces)
 		{
-			life.GetComponent<Image>().color = Color.gray;
+			life.GetComponent<Image>().color = Color.white;
 		}
 	}
 

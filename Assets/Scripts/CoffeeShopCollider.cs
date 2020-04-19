@@ -8,23 +8,24 @@ public class CoffeeShopCollider : MonoBehaviour
 	[SerializeField]
 	private GameObject canvas;
 
-	// private GameManager gameManager;
+	private GameManager gameManager;
+
 	private void Start()
 	{
 		canvas.SetActive(false);
 
-		// gameManager = FindObjectOfType<GameManager>();
+		gameManager = FindObjectOfType<GameManager>();
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			// TODO: enable gamemanagers!!!
-			// if (gameManager.GameWon)
-			// {
-			// 	canvas.SetActive(true);
-			// }
+
+			if (gameManager.GameWon)
+			{
+				canvas.SetActive(true);
+			}
 		}
 	}
 
@@ -32,10 +33,10 @@ public class CoffeeShopCollider : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			// if (gameManager.GameWon)
-			// {
-			// 	canvas.SetActive(true);
-			// }
+			if (gameManager.GameWon)
+			{
+				canvas.SetActive(true);
+			}
 		}
 	}
 }
