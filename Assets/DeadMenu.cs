@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EndMenu : MonoBehaviour
+public class DeadMenu : MonoBehaviour
 {
-    public GameObject EndMenuUI;
+    public GameObject DeadMenuUI;
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(WaitSomeTime());
+        StartCoroutine(WaitSomeTime());
     }
 
     private IEnumerator WaitSomeTime()
     {
         Debug.Log("message");
         yield return new WaitForSeconds(2);
-        ShowEndMenu();
+        ShowDeadMenu();
     }
 
-    public void ShowEndMenu()
+    public void ShowDeadMenu()
     {
-        EndMenuUI.SetActive(true);
+        DeadMenuUI.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void CloseGame()
     {
-        EndMenuUI.SetActive(false);
+        DeadMenuUI.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
