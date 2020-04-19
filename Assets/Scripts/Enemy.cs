@@ -65,8 +65,6 @@ public class Enemy : MonoBehaviour
 
 	private void Update()
 	{
-		if (attackStarted) return;
-		
 		Attack();
 	}
 
@@ -106,13 +104,19 @@ public class Enemy : MonoBehaviour
 
 		var distance = (targetPlayer.transform.position - transform.position).magnitude;
 
-		if (distance > attackDistance)
+		if (attackStarted)
 		{
-			StopCoroutine(ShootScream());
-			return;
+			if (distance > attackDistance)
+			{
+				StopAllCoroutines();
+				attackStarted = false;
+				StartCoroutine(ChangeTargetPositionCoroutine());
+			}
 		}
-
-		StartCoroutine(ShootScream());
+		else if (distance <= attackDistance)
+		{
+			StartCoroutine(ShootScream());
+		}
 	}
 
 	private IEnumerator ShootScream()
@@ -122,7 +126,8 @@ public class Enemy : MonoBehaviour
 		{
 			Vector3 shootingTarget;
 
-			shootingTarget = Vector3.Normalize(targetPlayer.transform.position);
+			shootingTarget = Random.Range(0.6f, 0.8f) *
+			                 Vector3.Normalize(targetPlayer.transform.position - transform.position);
 
 			var screamBullet = Instantiate(
 				screamBulletPrefab,
@@ -136,11 +141,11 @@ public class Enemy : MonoBehaviour
 
 			// TODO: Turn on the sound!
 			// audioManager.Play("Scream1");
-			
+
 			// ReSharper disable once CompareOfFloatsByEqualityOperator
 			if (attackFrequency == 0) attackFrequency = 1;
-			
-			yield return new WaitForSeconds(5/attackFrequency);
+
+			yield return new WaitForSeconds(5 / attackFrequency);
 		}
 	}
 
