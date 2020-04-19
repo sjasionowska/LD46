@@ -7,46 +7,73 @@ using UnityEngine.UI;
 public class HealthGui : MonoBehaviour
 {
 	[SerializeField]
-	private List<GameObject> lives;
-
+	private List<GameObject> peaces;
+	
 	[SerializeField]
-	private List<Sprite> heartImages;
-
+	private Text bulletsCounter;
+	
 	private int currentHealth;
+
+	private int bullets;
 
 	private Entity entity;
 
+	private PlayerShooting playerShooting;
+
 	void Awake()
 	{
+		playerShooting = FindObjectOfType<Player>().GetComponent<PlayerShooting>();
 		entity = FindObjectOfType<Player>().GetComponent<Entity>();
 		entity.OnHealthChanged += RefreshCurrentHealth;
+		playerShooting.OnBulletsChanged += RefreshCurrentBullets;
 	}
 
 	private void Start()
 	{
-		foreach (var life in lives)
+		foreach (var life in peaces)
 		{
-			life.GetComponent<Image>().sprite = heartImages[0];
+			life.GetComponent<Image>().color = Color.gray;
 		}
 	}
+	
+	
 
-	private void RefreshHearts()
+	private void RefreshPeaces()
 	{
-		for (int i = 0; i < lives.Count; i++)
+		for (int i = 0; i < peaces.Count; i++)
 		{
-			if (i < currentHealth) lives[i].GetComponent<Image>().sprite = heartImages[0];
-			else lives[i].GetComponent<Image>().sprite = heartImages[1];
+			// if (i < currentHealth) peaces[i].GetComponent<Image>().sprite = peaceImages[0];
+			//
+			// else peaces[i].GetComponent<Image>().sprite = peaceImages[1];		
+			
+			
+			if (i < currentHealth) peaces[i].GetComponent<Image>().color = Color.white;
+			
+			else peaces[i].GetComponent<Image>().color = Color.gray;
 		}
 	}
 
 	private void RefreshCurrentHealth(int health)
 	{
 		currentHealth = health;
-		if (currentHealth > lives.Count)
+		if (currentHealth > peaces.Count)
 		{
 			Debug.LogError("Current health is bigger than the amount of all hearts visible on the GUI.");
 		}
 
-		RefreshHearts();
+		RefreshPeaces();
 	}
+
+	private void RefreshCurrentBullets(int curBullets)
+	{
+		bullets = curBullets;
+		RefreshBullets();
+	}
+
+	private void RefreshBullets()
+	{
+		bulletsCounter.text = bullets.ToString();
+	}
+	
+	
 }

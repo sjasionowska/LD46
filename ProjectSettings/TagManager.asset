@@ -11,6 +11,8 @@ TagManager:
   - yWall
   - ScreamBullet
   - MenuItem
+  - LoveDrink
+  - CoffeeShop
   layers:
   - Default
   - TransparentFX

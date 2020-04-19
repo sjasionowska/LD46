@@ -20,6 +20,7 @@
           <e p="Enemy.cs" t="Include" />
           <e p="Entity.cs" t="Include" />
           <e p="HealthGui.cs" t="Include" />
+          <e p="LoveDrink.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
           <e p="OptionsMenu.cs" t="Include" />
           <e p="PauseMenu.cs" t="Include" />

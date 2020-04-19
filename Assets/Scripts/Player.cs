@@ -42,10 +42,7 @@ public class Player : MonoBehaviour
 
 	public Vector2 Direction
 	{
-		get
-		{
-			return new Vector2(xDirection, yDirection);
-		}
+		get { return new Vector2(xDirection, yDirection); }
 	}
 
 	private float currentSpeed;

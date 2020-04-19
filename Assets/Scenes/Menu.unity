@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2271,6 +2271,11 @@ MonoBehaviour:
     _volume: 0.7
     _pitch: 1
     _loop: 0
+  - _name: Scream1
+    _clip: {fileID: 8300000, guid: 7766399f30266b74d9ce459df3db0bee, type: 3}
+    _volume: 0.7
+    _pitch: 1
+    _loop: 0
   AudioMixer: {fileID: 24100000, guid: 635dc876bb6d56b47b0933f9729eff94, type: 2}
   group: {fileID: 24300002, guid: 635dc876bb6d56b47b0933f9729eff94, type: 2}
 --- !u!4 &1253017507
@@ -2409,7 +2414,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 76
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
