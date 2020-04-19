@@ -15,6 +15,10 @@ public class Entity : MonoBehaviour
 
 	private int health;
 
+	private EnemySpawner parent;
+
+	private bool thisIsEnemy;
+
 	public int Health
 	{
 		get { return health; }
@@ -36,7 +40,11 @@ public class Entity : MonoBehaviour
 
 				if (OnKilled != null) OnKilled.Invoke();
 
-				if (gameObject.CompareTag("Enemy")) Destroy(gameObject);
+				if (thisIsEnemy)
+				{
+					parent.RemoveEnemy(this.gameObject);
+					Destroy(gameObject);
+				}
 			}
 		}
 	}
@@ -44,11 +52,13 @@ public class Entity : MonoBehaviour
 	public void GetHurt()
 	{
 		Health--;
-		Debug.Log(Health);
 	}
 
 	private void Start()
 	{
 		Health = initialHealth;
+		thisIsEnemy = gameObject.CompareTag("Enemy");
+
+		if (thisIsEnemy) parent = gameObject.transform.parent.gameObject.GetComponent<EnemySpawner>();
 	}
 }

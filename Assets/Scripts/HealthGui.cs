@@ -8,17 +8,24 @@ public class HealthGui : MonoBehaviour
 {
 	[SerializeField]
 	private List<GameObject> peaces;
-	
+
 	[SerializeField]
 	private Text bulletsCounter;
-	
+
+	[SerializeField]
+	private Text eneniesCounter;
+
 	private int currentHealth;
 
 	private int bullets;
 
+	private int enemies;
+
 	private Entity entity;
 
 	private PlayerShooting playerShooting;
+
+	private EnemySpawner enemySpawner;
 
 	void Awake()
 	{
@@ -26,6 +33,22 @@ public class HealthGui : MonoBehaviour
 		entity = FindObjectOfType<Player>().GetComponent<Entity>();
 		entity.OnHealthChanged += RefreshCurrentHealth;
 		playerShooting.OnBulletsChanged += RefreshCurrentBullets;
+		enemySpawner = FindObjectOfType<EnemySpawner>();
+		enemies = enemySpawner.EnemiesCount;
+		RefreshEnemies();
+
+		enemySpawner.EnemiesCountChanged += RefreshCurrentEnemies;
+	}
+
+	private void RefreshCurrentEnemies(int currentEnemies)
+	{
+		enemies = currentEnemies;
+		RefreshEnemies();
+	}
+
+	private void RefreshEnemies()
+	{
+		eneniesCounter.text = enemies.ToString();
 	}
 
 	private void Start()
@@ -35,8 +58,6 @@ public class HealthGui : MonoBehaviour
 			life.GetComponent<Image>().color = Color.gray;
 		}
 	}
-	
-	
 
 	private void RefreshPeaces()
 	{
@@ -45,10 +66,9 @@ public class HealthGui : MonoBehaviour
 			// if (i < currentHealth) peaces[i].GetComponent<Image>().sprite = peaceImages[0];
 			//
 			// else peaces[i].GetComponent<Image>().sprite = peaceImages[1];		
-			
-			
+
 			if (i < currentHealth) peaces[i].GetComponent<Image>().color = Color.white;
-			
+
 			else peaces[i].GetComponent<Image>().color = Color.gray;
 		}
 	}
@@ -74,6 +94,4 @@ public class HealthGui : MonoBehaviour
 	{
 		bulletsCounter.text = bullets.ToString();
 	}
-	
-	
 }

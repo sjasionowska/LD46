@@ -59,6 +59,8 @@ public class Enemy : MonoBehaviour
 
 	private static readonly int Speed = Animator.StringToHash("Speed");
 
+	private GameObject parent;
+
 	private void Start()
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
@@ -67,6 +69,7 @@ public class Enemy : MonoBehaviour
 		targetPlayer = GameObject.FindGameObjectWithTag("Player");
 		audioManager = FindObjectOfType<AudioManager>();
 		animator = GetComponent<Animator>();
+
 
 		StartCoroutine(ChangeTargetPositionCoroutine());
 	}
