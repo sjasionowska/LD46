@@ -9,6 +9,7 @@ TagManager:
   - Building
   - xWall
   - yWall
+  - ScreamBullet
   layers:
   - Default
   - TransparentFX

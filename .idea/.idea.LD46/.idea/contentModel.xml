@@ -14,6 +14,8 @@
           <e p="ButtonSound.cs" t="Include" />
           <e p="Crosshair.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
+          <e p="Entity.cs" t="Include" />
+          <e p="HealthGui.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="PlayerShooting.cs" t="Include" />
