@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
 {
 	[SerializeField]
 	private int initialHealth = 5;
-	
+
 	public event Action<int> OnHealthChanged;
 
 	public event Action OnKilled;
@@ -29,14 +29,14 @@ public class Entity : MonoBehaviour
 
 			if (health == 0)
 			{
-				if(gameObject.CompareTag("Player"))
+				if (gameObject.CompareTag("Player"))
 				{
 					Debug.Log("You've died. lol");
 				}
-				
+
 				if (OnKilled != null) OnKilled.Invoke();
 
-				Destroy(gameObject);
+				if (gameObject.CompareTag("Enemy")) Destroy(gameObject);
 			}
 		}
 	}
