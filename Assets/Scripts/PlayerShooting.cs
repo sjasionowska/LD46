@@ -26,8 +26,16 @@ public class PlayerShooting : MonoBehaviour
 	{
 		Vector3 shootingTarget;
 
-		if (Math.Abs(player.Movement.magnitude) < 0.01) shootingTarget = 0.5f * Vector2.down;
-		else shootingTarget = 0.5f * player.Movement;
+		// if (Math.Abs(player.Movement.magnitude) < 0.01)
+		// {
+		// 	shootingTarget = 0.5f * player.Direction;
+		// 	// shootingTarget = 0.5f * Vector2.down;
+		// }
+		// else shootingTarget = 0.5f * player.Movement;
+		
+		
+		shootingTarget = player.Direction.normalized;
+		Debug.Log(player.Direction);
 
 		var heartBullet = Instantiate(
 			bulletPrefab,

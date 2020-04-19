@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -7,5 +9,10 @@ public class Bullet : MonoBehaviour
 	private void Start ()
 	{
 		Destroy(gameObject, Time);
+	}
+
+	private void OnCollisionEnter(Collision other)
+	{
+		Destroy(gameObject);
 	}
 }

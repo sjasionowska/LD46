@@ -31,9 +31,21 @@ public class Player : MonoBehaviour
 
 	private Vector2 movement;
 
+	private float xDirection;
+
+	private float yDirection;
+
 	public Vector2 Movement
 	{
 		get => movement;
+	}
+
+	public Vector2 Direction
+	{
+		get
+		{
+			return new Vector2(xDirection, yDirection);
+		}
 	}
 
 	private float currentSpeed;
@@ -43,6 +55,10 @@ public class Player : MonoBehaviour
 	private static readonly int Vertical = Animator.StringToHash("Vertical");
 
 	private static readonly int Speed = Animator.StringToHash("Speed");
+
+	private static readonly int XDirection = Animator.StringToHash("xDirection");
+
+	private static readonly int YDirection = Animator.StringToHash("yDirection");
 
 	private void Start()
 	{
@@ -56,16 +72,32 @@ public class Player : MonoBehaviour
 		movement.x = Input.GetAxisRaw("Horizontal");
 		movement.y = Input.GetAxisRaw("Vertical");
 		currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runningSpeed : walkingSpeed;
-		
+
+		var movementNormalized = movement;
+
 		animator.speed = currentSpeed / 3;
-		animator.SetFloat(Horizontal, movement.x);
-		animator.SetFloat(Vertical, movement.y);
+		animator.SetFloat(Horizontal, movementNormalized.x);
+		animator.SetFloat(Vertical, movementNormalized.y);
+
 		animator.SetFloat(Speed, movement.sqrMagnitude);
 	}
 
 	private void FixedUpdate()
 	{
 		rigidbody.MovePosition(rigidbody.position + movement * (currentSpeed * Time.fixedDeltaTime));
+
+		// xDirection = 0;
+		// yDirection = 0;
+
+		if (Math.Abs(movement.magnitude) > 0.5)
+		{
+			xDirection = animator.GetFloat(Horizontal);
+			yDirection = animator.GetFloat(Vertical);
+
+			animator.SetFloat(XDirection, xDirection);
+			animator.SetFloat(YDirection, yDirection);
+		}
+		Debug.Log(xDirection + " " + yDirection);
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)

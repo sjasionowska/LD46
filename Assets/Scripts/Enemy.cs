@@ -25,6 +25,10 @@ public class Enemy : MonoBehaviour
 
 	[SerializeField]
 	private float attackFrequency = 0;
+	[SerializeField]
+
+	private float bulletSpeed;
+
 
 	private float attackDamage = 1f;
 
@@ -50,6 +54,7 @@ public class Enemy : MonoBehaviour
 	private AudioManager audioManager;
 	
 	private Animator animator;
+
 
 	private static readonly int Horizontal = Animator.StringToHash("Horizontal");
 
@@ -165,7 +170,7 @@ public class Enemy : MonoBehaviour
 
 			var screamBulletRigidbody = screamBullet.GetComponent<Rigidbody2D>();
 
-			screamBulletRigidbody.AddForce(20 * shootingTarget);
+			screamBulletRigidbody.AddForce(bulletSpeed * shootingTarget);
 
 			// TODO: Turn on the sound!
 			// audioManager.Play("Scream1");

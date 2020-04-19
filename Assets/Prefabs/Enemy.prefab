@@ -102,6 +102,7 @@ MonoBehaviour:
   screamBulletPrefab: {fileID: 5892795136573116936, guid: 6d8ccdee5ac954ab697221cfa4a0e40f,
     type: 3}
   attackFrequency: 5
+  bulletSpeed: 12
 --- !u!50 &7050067971118905622
 Rigidbody2D:
   serializedVersion: 4
