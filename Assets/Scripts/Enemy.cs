@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Entity))]
+[RequireComponent(typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
 	[SerializeField]
@@ -47,6 +48,14 @@ public class Enemy : MonoBehaviour
 	private GameObject targetPlayer;
 
 	private AudioManager audioManager;
+	
+	private Animator animator;
+
+	private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+
+	private static readonly int Vertical = Animator.StringToHash("Vertical");
+
+	private static readonly int Speed = Animator.StringToHash("Speed");
 
 	private void Start()
 	{
@@ -56,6 +65,7 @@ public class Enemy : MonoBehaviour
 
 		targetPlayer = GameObject.FindGameObjectWithTag("Player");
 		audioManager = FindObjectOfType<AudioManager>();
+		animator = GetComponent<Animator>();
 
 
 		StartCoroutine(ChangeTargetPositionCoroutine());
@@ -73,7 +83,10 @@ public class Enemy : MonoBehaviour
 	private void Update()
 	{
 		Attack();
+		
 	}
+	
+	
 
 	private void FixedUpdate()
 	{
@@ -98,11 +111,19 @@ public class Enemy : MonoBehaviour
 
 		direction = targetPosition - position;
 
+		var movement = direction.normalized;
+		
+		animator.SetFloat(Horizontal, movement.x);
+		animator.SetFloat(Vertical, movement.y);
+		animator.SetFloat(Speed, movement.sqrMagnitude);
+
 		// different way of moving, not sure if this works and how
 		// var targetVelocity = direction.normalized;
 		// rigidbody.MovePosition(targetPosition * (speed * Time.fixedDeltaTime));
 
 		rigidbody.MovePosition(position + direction * (speed * Time.fixedDeltaTime));
+		
+		
 	}
 
 	private void Attack()

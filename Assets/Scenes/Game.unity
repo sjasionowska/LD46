@@ -163,8 +163,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 66.1
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 155023363}
   - component: {fileID: 155023362}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Peace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 864616725}
   - component: {fileID: 864616727}
   - component: {fileID: 864616726}
+  - component: {fileID: 864616728}
   m_Layer: 5
   m_Name: TopUI
   m_TagString: Untagged
@@ -549,6 +550,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864616724}
   m_CullTransparentMesh: 0
+--- !u!114 &864616728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864616724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd348929d05d498783e91ec23c1722dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives:
+  - {fileID: 432172322}
+  - {fileID: 170487844}
+  - {fileID: 1873394891}
+  - {fileID: 1683217557}
+  - {fileID: 1694362370}
+  heartImages:
+  - {fileID: 21300000, guid: 5bdf31d10340344d99b8fad8f221c5da, type: 3}
+  - {fileID: 21300002, guid: 5bdf31d10340344d99b8fad8f221c5da, type: 3}
 --- !u!1 &958599749
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +756,7 @@ GameObject:
   - component: {fileID: 1210566358}
   - component: {fileID: 1210566359}
   - component: {fileID: 1210566354}
+  - component: {fileID: 1210566360}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -881,6 +904,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 0.73}
   m_EdgeRadius: 0
+--- !u!95 &1210566360
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210566353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bca813f2274a24d3ba94796e83324e90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1352042790
 GameObject:
   m_ObjectHideFlags: 0
