@@ -5,7 +5,14 @@ using UnityEngine;
 public class StartMenu : MonoBehaviour
 {
     public GameObject StartMenuUI;
-    // Start is called before the first frame update
+
+    private GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
+
     void Start()
     {
         ShowStartMenu();
@@ -14,13 +21,13 @@ public class StartMenu : MonoBehaviour
     public void ShowStartMenu()
     {
         StartMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        _gameManager.Pause();
     }
 
     public void StartGame()
     {
         StartMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        _gameManager.Run();
     }
 
 }

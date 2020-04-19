@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class EndMenu : MonoBehaviour
 {
     public GameObject EndMenuUI;
-    // Start is called before the first frame update
+    private GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
+
     void Start()
     {
         //StartCoroutine(WaitSomeTime());
@@ -22,13 +28,13 @@ public class EndMenu : MonoBehaviour
     public void ShowEndMenu()
     {
         EndMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        _gameManager.Pause();
     }
 
     public void CloseGame()
     {
         EndMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        _gameManager.Run();
         SceneManager.LoadScene("Menu");
     }
 }

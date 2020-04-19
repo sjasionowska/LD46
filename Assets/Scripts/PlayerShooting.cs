@@ -1,7 +1,7 @@
 using System;
 
 using UnityEngine;
-
+[RequireComponent(typeof(Player))]
 public class PlayerShooting : MonoBehaviour
 {
 	[SerializeField]
