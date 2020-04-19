@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.8
-  attackDistance: 6
-  distanceNecessaryToFollowPlayer: 8
+  attackDistance: 4
+  distanceNecessaryToFollowPlayer: 6
   screamBulletPrefab: {fileID: 5892795136573116936, guid: 6d8ccdee5ac954ab697221cfa4a0e40f,
     type: 3}
   attackFrequency: 5
-  bulletSpeed: 12
+  bulletSpeed: 5
 --- !u!50 &7050067971118905622
 Rigidbody2D:
   serializedVersion: 4

@@ -25,10 +25,9 @@ public class Enemy : MonoBehaviour
 
 	[SerializeField]
 	private float attackFrequency = 0;
+
 	[SerializeField]
-
 	private float bulletSpeed;
-
 
 	private float attackDamage = 1f;
 
@@ -39,9 +38,8 @@ public class Enemy : MonoBehaviour
 	private bool movingIndependently;
 
 	private bool attackStarted;
-	
-	private Entity entity;
 
+	private Entity entity;
 
 #pragma warning disable 108,114
 
@@ -52,9 +50,8 @@ public class Enemy : MonoBehaviour
 	private GameObject targetPlayer;
 
 	private AudioManager audioManager;
-	
-	private Animator animator;
 
+	private Animator animator;
 
 	private static readonly int Horizontal = Animator.StringToHash("Horizontal");
 
@@ -67,11 +64,9 @@ public class Enemy : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody2D>();
 		entity = GetComponent<Entity>();
 
-
 		targetPlayer = GameObject.FindGameObjectWithTag("Player");
 		audioManager = FindObjectOfType<AudioManager>();
 		animator = GetComponent<Animator>();
-
 
 		StartCoroutine(ChangeTargetPositionCoroutine());
 	}
@@ -88,10 +83,7 @@ public class Enemy : MonoBehaviour
 	private void Update()
 	{
 		Attack();
-		
 	}
-	
-	
 
 	private void FixedUpdate()
 	{
@@ -117,7 +109,7 @@ public class Enemy : MonoBehaviour
 		direction = targetPosition - position;
 
 		var movement = direction.normalized;
-		
+
 		animator.SetFloat(Horizontal, movement.x);
 		animator.SetFloat(Vertical, movement.y);
 		animator.SetFloat(Speed, movement.sqrMagnitude);
@@ -127,8 +119,6 @@ public class Enemy : MonoBehaviour
 		// rigidbody.MovePosition(targetPosition * (speed * Time.fixedDeltaTime));
 
 		rigidbody.MovePosition(position + direction * (speed * Time.fixedDeltaTime));
-		
-		
 	}
 
 	private void Attack()
@@ -157,6 +147,8 @@ public class Enemy : MonoBehaviour
 		attackStarted = true;
 		while (true)
 		{
+			yield return new WaitForSeconds(5 / attackFrequency);
+
 			Vector3 shootingTarget;
 
 			shootingTarget = Random.Range(0.6f, 0.8f) *
@@ -173,12 +165,10 @@ public class Enemy : MonoBehaviour
 			screamBulletRigidbody.AddForce(bulletSpeed * shootingTarget);
 
 			// TODO: Turn on the sound!
-			// audioManager.Play("Scream1");
+			audioManager.Play("Scream1");
 
 			// ReSharper disable once CompareOfFloatsByEqualityOperator
 			if (attackFrequency == 0) attackFrequency = 1;
-
-			yield return new WaitForSeconds(5 / attackFrequency);
 		}
 	}
 
@@ -187,11 +177,6 @@ public class Enemy : MonoBehaviour
 		if (other.gameObject.CompareTag("Bullet"))
 		{
 			entity.GetHurt();
-		}
-
-		if (other.gameObject.CompareTag("Player"))
-		{
-			// Debug.Log("Player");
 		}
 	}
 }

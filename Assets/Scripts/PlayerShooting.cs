@@ -62,12 +62,12 @@ public class PlayerShooting : MonoBehaviour
 
 		var bulletRigidbody = heartBullet.GetComponent<Rigidbody2D>();
 
-		bulletRigidbody.AddForce(20 * shootingTarget);
+		bulletRigidbody.AddForce(15 * shootingTarget);
 
 		Bullets--;
 
 		// TODO: Turn on the sound!
-		// audioManager.Play("LoveShot");
+		audioManager.Play("LoveShot");
 	}
 
 	public void CollectBullets()

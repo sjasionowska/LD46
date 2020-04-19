@@ -10,7 +10,6 @@
         <e p="Fonts" t="Include">
           <e p="SIL Open Font License.txt" t="Include" />
         </e>
-        <e p="LoveDrink.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio.cs" t="Include" />
           <e p="AudioManager.cs" t="Include" />
@@ -21,6 +20,7 @@
           <e p="Enemy.cs" t="Include" />
           <e p="Entity.cs" t="Include" />
           <e p="HealthGui.cs" t="Include" />
+          <e p="LoveDrink.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
           <e p="OptionsMenu.cs" t="Include" />
           <e p="PauseMenu.cs" t="Include" />
