@@ -165,7 +165,7 @@ public class Enemy : MonoBehaviour
 			screamBulletRigidbody.AddForce(bulletSpeed * shootingTarget);
 
 			// TODO: Turn on the sound!
-			audioManager.Play("Scream1");
+			// audioManager.Play("Scream1");
 
 			// ReSharper disable once CompareOfFloatsByEqualityOperator
 			if (attackFrequency == 0) attackFrequency = 1;

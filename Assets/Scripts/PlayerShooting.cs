@@ -67,7 +67,7 @@ public class PlayerShooting : MonoBehaviour
 		Bullets--;
 
 		// TODO: Turn on the sound!
-		audioManager.Play("LoveShot");
+		// audioManager.Play("LoveShot");
 	}
 
 	public void CollectBullets()
@@ -82,10 +82,8 @@ public class PlayerShooting : MonoBehaviour
 			if(Input.GetKeyDown(KeyCode.E))
 				CollectBullets();
 		}
+		
+
 	}
 
-	private void OnCollisionEnter2D(Collision2D other)
-	{
-		
-	}
 }

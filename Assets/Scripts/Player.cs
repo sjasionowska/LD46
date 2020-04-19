@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
 
 	private float yDirection;
 
+	// TODO
+	// private GameManager gameManager;
+
 	public Vector2 Movement
 	{
 		get => movement;
@@ -62,6 +65,9 @@ public class Player : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		entity = GetComponent<Entity>();
+		
+		// TODO enable
+		// gameManager = FindObjectOfType<GameManager>();
 	}
 
 	private void Update()
@@ -98,6 +104,25 @@ public class Player : MonoBehaviour
 		if (other.gameObject.CompareTag("ScreamBullet"))
 		{
 			entity.GetHurt();
+		}
+	}
+	
+	private void OnCollisionStay2D(Collision2D other)
+	{
+		
+		
+		if(other.gameObject.CompareTag("CoffeeShop"))
+		{
+			
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				// TODO: enable gameManager!!!
+				// if (gameManager.GameWon)
+				// {
+				// 	WinGame();
+				// }
+			}
+
 		}
 	}
 
