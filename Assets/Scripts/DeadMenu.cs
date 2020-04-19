@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class DeadMenu : MonoBehaviour
 {
     public GameObject DeadMenuUI;
+    private GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +29,13 @@ public class DeadMenu : MonoBehaviour
     public void ShowDeadMenu()
     {
         DeadMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        _gameManager.Pause();
     }
 
     public void CloseGame()
     {
         DeadMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        _gameManager.Run();
         SceneManager.LoadScene("Menu");
     }
 }

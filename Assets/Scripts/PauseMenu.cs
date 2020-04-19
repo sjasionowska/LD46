@@ -7,8 +7,13 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
+    private GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+    }
 
 
     private void Start()
@@ -21,11 +26,13 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(GameIsPaused)
+            if(_gameManager.IsPaused)
             {
+                Debug.Log("Resume");
                 Resume();
             } else
             {
+                Debug.Log("Pause");
                 Pause();
             }
         }
@@ -34,23 +41,20 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        _gameManager.Run();
     }
 
     public void Pause()
     {
         ShowMainMenu();
         PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        _gameManager.Pause();
     }
 
     public void Quit()
     {
 
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        _gameManager.Run();
         SceneManager.LoadScene("Menu");
     }
 
@@ -58,13 +62,9 @@ public class PauseMenu : MonoBehaviour
     {
         var mainMenu = PauseMenuUI.transform.Find("MainMenu").gameObject;
         var optionsMenu = PauseMenuUI.transform.Find("OptionsMenu").gameObject;
-        var aboutMenu = PauseMenuUI.transform.Find("AboutMenu").gameObject;
-        var helpMenu = PauseMenuUI.transform.Find("HelpMenu").gameObject;
 
         mainMenu.SetActive(true);
         optionsMenu.SetActive(false);
-        aboutMenu.SetActive(false);
-        helpMenu.SetActive(false);
 
         //var menuItems = GameObject.FindGameObjectsWithTag("MenuItem");
         //if (menuItems.Length == 0)
