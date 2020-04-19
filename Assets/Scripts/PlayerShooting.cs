@@ -35,7 +35,6 @@ public class PlayerShooting : MonoBehaviour
 		
 		
 		shootingTarget = player.Direction.normalized;
-		Debug.Log(player.Direction);
 
 		var heartBullet = Instantiate(
 			bulletPrefab,

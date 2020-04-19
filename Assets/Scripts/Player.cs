@@ -86,9 +86,6 @@ public class Player : MonoBehaviour
 	{
 		rigidbody.MovePosition(rigidbody.position + movement * (currentSpeed * Time.fixedDeltaTime));
 
-		// xDirection = 0;
-		// yDirection = 0;
-
 		if (Math.Abs(movement.magnitude) > 0.5)
 		{
 			xDirection = animator.GetFloat(Horizontal);
@@ -97,7 +94,6 @@ public class Player : MonoBehaviour
 			animator.SetFloat(XDirection, xDirection);
 			animator.SetFloat(YDirection, yDirection);
 		}
-		Debug.Log(xDirection + " " + yDirection);
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)
