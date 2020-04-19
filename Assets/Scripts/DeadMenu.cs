@@ -9,7 +9,7 @@ public class DeadMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(WaitSomeTime());
+        //StartCoroutine(WaitSomeTime());
     }
 
     private IEnumerator WaitSomeTime()
