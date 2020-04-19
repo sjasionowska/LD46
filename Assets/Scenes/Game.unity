@@ -295,11 +295,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f99cd2f0694c401e82f9a15fa5b490d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.6
-  attackDistance: 2
-  distanceNecessaryToAttack: 4
+  speed: 0.7
+  attackDistance: 4
+  distanceNecessaryToFollowPlayer: 6
   screamBulletPrefab: {fileID: 5892795136573116936, guid: 6d8ccdee5ac954ab697221cfa4a0e40f,
     type: 3}
+  attackSpeed: 2
 --- !u!212 &1210566356
 SpriteRenderer:
   m_ObjectHideFlags: 0

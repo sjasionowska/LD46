@@ -16,10 +16,13 @@ public class Enemy : MonoBehaviour
 	private float attackDistance = 2f;
 
 	[SerializeField]
-	private float distanceNecessaryToAttack = 4f;
+	private float distanceNecessaryToFollowPlayer = 6f;
 
 	[SerializeField]
 	private GameObject screamBulletPrefab;
+
+	[SerializeField]
+	private float attackFrequency = 0;
 
 	private float attackDamage = 1f;
 
@@ -28,6 +31,8 @@ public class Enemy : MonoBehaviour
 	private Vector2 direction;
 
 	private bool movingIndependently;
+
+	private bool attackStarted;
 
 #pragma warning disable 108,114
 
@@ -53,13 +58,15 @@ public class Enemy : MonoBehaviour
 	{
 		while (true)
 		{
-			targetPosition = (Vector2)transform.position + Random.insideUnitCircle * 2f;
+			targetPosition = (Vector2)transform.position + Random.insideUnitCircle * 3f;
 			yield return new WaitForSeconds(1f);
 		}
 	}
 
 	private void Update()
 	{
+		if (attackStarted) return;
+		
 		Attack();
 	}
 
@@ -73,12 +80,12 @@ public class Enemy : MonoBehaviour
 		var position = rigidbody.position;
 
 		// if the target is not null, count the distance between the target and the enemy
-		// if the distance is less or equal to  distanceNecessaryToAttack field
+		// if the distance is less or equal to  distanceNecessaryToFollowPlayer field
 		// start following the player
 		if (targetPlayer != null)
 		{
 			var distance = ((Vector2)targetPlayer.transform.position - position).magnitude;
-			if (distance <= distanceNecessaryToAttack)
+			if (distance <= distanceNecessaryToFollowPlayer)
 			{
 				targetPosition = targetPlayer.transform.position;
 			}
@@ -101,9 +108,7 @@ public class Enemy : MonoBehaviour
 
 		if (distance > attackDistance)
 		{
-			StopAllCoroutines();
-			StartCoroutine(ChangeTargetPositionCoroutine());
-			
+			StopCoroutine(ShootScream());
 			return;
 		}
 
@@ -112,6 +117,7 @@ public class Enemy : MonoBehaviour
 
 	private IEnumerator ShootScream()
 	{
+		attackStarted = true;
 		while (true)
 		{
 			Vector3 shootingTarget;
@@ -128,8 +134,13 @@ public class Enemy : MonoBehaviour
 
 			screamBulletRigidbody.AddForce(20 * shootingTarget);
 
-			audioManager.Play("Scream1");
-			yield return new WaitForSeconds(5f);
+			// TODO: Turn on the sound!
+			// audioManager.Play("Scream1");
+			
+			// ReSharper disable once CompareOfFloatsByEqualityOperator
+			if (attackFrequency == 0) attackFrequency = 1;
+			
+			yield return new WaitForSeconds(5/attackFrequency);
 		}
 	}
 

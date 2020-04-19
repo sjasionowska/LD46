@@ -39,6 +39,7 @@ public class PlayerShooting : MonoBehaviour
 
 		bulletRigidbody.AddForce(20 * shootingTarget);
 
-		audioManager.Play("LoveShot");
+		// TODO: Turn on the sound!
+		// audioManager.Play("LoveShot");
 	}
 }
