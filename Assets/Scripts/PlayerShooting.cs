@@ -7,6 +7,22 @@ public class PlayerShooting : MonoBehaviour
 	[SerializeField]
 	private GameObject bulletPrefab;
 
+	public int Bullets
+	{
+		get { return bullets; }
+
+		private set
+		{
+			bullets = value;
+
+			if (OnBulletsChanged != null) OnBulletsChanged.Invoke(bullets);
+		}
+	}
+
+	public event Action<int> OnBulletsChanged;
+
+	private int bullets;
+
 	private Player player;
 
 	private AudioManager audioManager;
@@ -18,12 +34,15 @@ public class PlayerShooting : MonoBehaviour
 
 	private void Start()
 	{
+		Bullets = 10;
 		player = gameObject.GetComponent<Player>();
 		audioManager = FindObjectOfType<AudioManager>();
 	}
 
 	void ShootLove()
 	{
+		if (Bullets == 0) return;
+
 		Vector3 shootingTarget;
 
 		// if (Math.Abs(player.Movement.magnitude) < 0.01)
@@ -32,8 +51,7 @@ public class PlayerShooting : MonoBehaviour
 		// 	// shootingTarget = 0.5f * Vector2.down;
 		// }
 		// else shootingTarget = 0.5f * player.Movement;
-		
-		
+
 		shootingTarget = player.Direction.normalized;
 
 		var heartBullet = Instantiate(
@@ -46,7 +64,22 @@ public class PlayerShooting : MonoBehaviour
 
 		bulletRigidbody.AddForce(20 * shootingTarget);
 
+		Bullets--;
+
 		// TODO: Turn on the sound!
 		// audioManager.Play("LoveShot");
+	}
+
+	public void CollectBullets()
+	{
+		Bullets = 10;
+	}
+
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.CompareTag("LoveDrink"))
+		{
+			CollectBullets();
+		}
 	}
 }

@@ -98,10 +98,12 @@ public class Player : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
+		
 		if (other.gameObject.CompareTag("ScreamBullet"))
 		{
 			entity.GetHurt();
 		}
+
 	}
 
 	// private void Move()
@@ -116,4 +118,6 @@ public class Player : MonoBehaviour
 	//
 	// 	rigidbody.MovePosition(transform.position + walkingDirection * Time.fixedDeltaTime);
 	// }
+
+
 }

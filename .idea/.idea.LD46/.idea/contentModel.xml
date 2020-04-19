@@ -10,6 +10,7 @@
         <e p="Fonts" t="Include">
           <e p="SIL Open Font License.txt" t="Include" />
         </e>
+        <e p="LoveDrink.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio.cs" t="Include" />
           <e p="AudioManager.cs" t="Include" />
