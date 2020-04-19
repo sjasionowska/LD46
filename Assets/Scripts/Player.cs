@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 	private Entity entity;
 
 #pragma warning disable 108,114
+
 	// ReSharper disable once IdentifierTypo
 	private Rigidbody2D rigidbody;
 #pragma warning restore 108,114
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
 		movement.y = Input.GetAxisRaw("Vertical");
 		currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runningSpeed : walkingSpeed;
 		
+		animator.speed = currentSpeed / 3;
 		animator.SetFloat(Horizontal, movement.x);
 		animator.SetFloat(Vertical, movement.y);
 		animator.SetFloat(Speed, movement.sqrMagnitude);
