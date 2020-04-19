@@ -162,7 +162,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 93
+  field of view: 66.1
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 1210566355}
   - component: {fileID: 1210566358}
   - component: {fileID: 1210566359}
+  - component: {fileID: 1210566354}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -740,6 +741,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1210566354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210566353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a650167e2164533bc988eab4976e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 2
 --- !u!114 &1210566355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,6 +1211,7 @@ GameObject:
   - component: {fileID: 2115112718}
   - component: {fileID: 2115112719}
   - component: {fileID: 2115112717}
+  - component: {fileID: 2115112720}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1351,3 +1366,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5892795136573116936, guid: 02c4194ac08984228bd51da30e57fd16,
     type: 3}
+--- !u!114 &2115112720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115112712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a650167e2164533bc988eab4976e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 5

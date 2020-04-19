@@ -7,6 +7,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Entity))]
 public class Enemy : MonoBehaviour
 {
 	[SerializeField]
@@ -33,6 +34,9 @@ public class Enemy : MonoBehaviour
 	private bool movingIndependently;
 
 	private bool attackStarted;
+	
+	private Entity entity;
+
 
 #pragma warning disable 108,114
 
@@ -47,9 +51,12 @@ public class Enemy : MonoBehaviour
 	private void Start()
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
+		entity = GetComponent<Entity>();
+
 
 		targetPlayer = GameObject.FindGameObjectWithTag("Player");
 		audioManager = FindObjectOfType<AudioManager>();
+
 
 		StartCoroutine(ChangeTargetPositionCoroutine());
 	}
@@ -153,12 +160,12 @@ public class Enemy : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Bullet"))
 		{
-			Debug.Log("Bullet");
+			entity.GetHurt();
 		}
 
 		if (other.gameObject.CompareTag("Player"))
 		{
-			Debug.Log("Player");
+			// Debug.Log("Player");
 		}
 	}
 }

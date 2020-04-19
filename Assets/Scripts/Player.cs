@@ -8,6 +8,9 @@ using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Entity))]
+[RequireComponent(typeof(PlayerShooting))]
+[RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour
 {
 	[SerializeField]
@@ -17,6 +20,8 @@ public class Player : MonoBehaviour
 	private float runningSpeed = 3f;
 
 	private Animator animator;
+
+	private Entity entity;
 
 #pragma warning disable 108,114
 	// ReSharper disable once IdentifierTypo
@@ -42,6 +47,7 @@ public class Player : MonoBehaviour
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		entity = GetComponent<Entity>();
 	}
 
 	private void Update()
@@ -58,6 +64,14 @@ public class Player : MonoBehaviour
 	private void FixedUpdate()
 	{
 		rigidbody.MovePosition(rigidbody.position + movement * (currentSpeed * Time.fixedDeltaTime));
+	}
+
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.CompareTag("ScreamBullet"))
+		{
+			entity.GetHurt();
+		}
 	}
 
 	// private void Move()
