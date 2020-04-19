@@ -5,7 +5,8 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] Sounds;
-
+    public AudioMixer AudioMixer;
+    public AudioMixerGroup group;
     private static AudioManager _instance;
 
     public static AudioManager Instance
@@ -31,8 +32,15 @@ public class AudioManager : MonoBehaviour
             s.Source.clip = s.Clip;
             s.Source.volume = s.Volume;
             s.Source.loop = s.Loop;
+            s.Source.outputAudioMixerGroup = group;
             s.Source.playOnAwake = false;
         }
+    }
+
+    public void SetVolume(float volume)
+    {
+        Debug.Log(Mathf.Log10(volume) * 20);
+        AudioMixer.SetFloat("MainVolume", Mathf.Log10(volume) * 20);
     }
 
     void Start()

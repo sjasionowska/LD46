@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [Serializable]
 public class Sound
@@ -17,7 +18,6 @@ public class Sound
 
     [SerializeField]
     private bool _loop;
-
 
     public string Name { get { return _name; } set { _name = value; } }
     public AudioClip Clip { get { return _clip; } set { _clip = value; } }
