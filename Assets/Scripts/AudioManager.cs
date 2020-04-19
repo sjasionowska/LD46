@@ -7,23 +7,22 @@ public class AudioManager : MonoBehaviour
     public Sound[] Sounds;
     public AudioMixer AudioMixer;
     public AudioMixerGroup group;
-    private static AudioManager _instance;
+    private static bool _mainThemeStarted = false;
 
-    public static AudioManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = new AudioManager();
-
-            return _instance;
-        }
-    }
+    public static AudioManager Instance;
 
     private AudioManager() { }
 
     private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         DontDestroyOnLoad(gameObject);
 
         foreach(var s in Sounds)
@@ -45,7 +44,13 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        Play("MainTheme");
+        if(!_mainThemeStarted)
+        {
+            Debug.Log("playing main theme");
+            Play("MainTheme");
+            _mainThemeStarted = true;
+        }
+
     }
 
     public void Play(string name)
