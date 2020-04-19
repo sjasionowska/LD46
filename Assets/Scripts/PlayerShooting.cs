@@ -75,11 +75,17 @@ public class PlayerShooting : MonoBehaviour
 		Bullets = 10;
 	}
 
-	private void OnCollisionEnter2D(Collision2D other)
+	private void OnCollisionStay2D(Collision2D other)
 	{
 		if (other.gameObject.CompareTag("LoveDrink"))
 		{
-			CollectBullets();
+			if(Input.GetKeyDown(KeyCode.E))
+				CollectBullets();
 		}
+	}
+
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		
 	}
 }
