@@ -19937,7 +19937,7 @@ PrefabInstance:
     - target: {fileID: 6980216297298471311, guid: e5e5ab2849cae472682121e34355a9bb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -29.95993
+      value: -29.95996
       objectReference: {fileID: 0}
     - target: {fileID: 6980216297356875950, guid: e5e5ab2849cae472682121e34355a9bb,
         type: 3}
@@ -56065,7 +56065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3529412, g: 0.7254902, b: 0.65882355, a: 0.7137255}
+  m_Color: {r: 0.45490196, g: 0.77254903, b: 0.7176471, a: 0.7137255}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -56351,7 +56351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3529412, g: 0.7254902, b: 0.65882355, a: 1}
+  m_Color: {r: 0.45490196, g: 0.77254903, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -56583,7 +56583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3529412, g: 0.7254902, b: 0.65882355, a: 1}
+  m_Color: {r: 0.45490196, g: 0.77254903, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -56657,7 +56657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3529412, g: 0.7254902, b: 0.65882355, a: 1}
+  m_Color: {r: 0.45612317, g: 0.7735849, b: 0.71677595, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -57860,10 +57860,10 @@ RectTransform:
   m_Father: {fileID: 1341166676880744649}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8867149195806047163
 GameObject:
