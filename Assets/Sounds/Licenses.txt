@@ -1,0 +1,7 @@
+SCREAM3.wav comes from site freesoundeffects.com (https://www.freesoundeffects.com/free-track/scream3-466426/)
+ah.wav, ah2.wav, whoo.wav are part of TriSamples - 808 Trapstep Pack Vol1 & Vol2 (https://trisamples.com/license-copyright-information/)
+
+We want to thank authors of sounds mention above.
+
+reaggae_jam.mp3 (aka theme music) was created in FL Studio 20 Fruity Edition by Krystian Kuryło (@notsuperhero2)
+heartbeat 1.wav, menu_click.wav, menu_click_ok.wav are sounds from FL Studio 20 Fruity Edition (from Flex plugin to be precise :))
