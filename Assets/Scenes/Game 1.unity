@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -56526,17 +56526,17 @@ PrefabInstance:
     - target: {fileID: 1391182117166529107, guid: 30f30c8fa773845cda22a8153480d4d1,
         type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.45490196
+      value: 0.3529412
       objectReference: {fileID: 0}
     - target: {fileID: 1391182117166529107, guid: 30f30c8fa773845cda22a8153480d4d1,
         type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.77254903
+      value: 0.7254902
       objectReference: {fileID: 0}
     - target: {fileID: 1391182117166529107, guid: 30f30c8fa773845cda22a8153480d4d1,
         type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.7176471
+      value: 0.65882355
       objectReference: {fileID: 0}
     - target: {fileID: 1391182117166529107, guid: 30f30c8fa773845cda22a8153480d4d1,
         type: 3}
@@ -60456,8 +60456,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: It's a beautiful, sunny day in a small town. Young Hippie just wants to
-    go to a coffee shop and relax, but there are many pissed people in the city. We
-    live in stressful times. But! Our man has amazing power - shooting love, which
+    go to a coffee shop and relax, but there are many pissed people in the city. (We
+    live in stressful times.) But! Our man has an amazing power - shooting love, which
     can make angry people calm and relaxed. (And disappeared.) Help him fulfill his
     mission. Spread peace and love in the city.
 --- !u!224 &8867149197256781999
