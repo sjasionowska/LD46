@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2266,7 +2266,7 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 768d9738215e77e4e8a7dd9ff75330e3, type: 3}
     _volume: 0.7
     _pitch: 1
-    _loop: 0
+    _loop: 1
   - _name: LoveShot
     _clip: {fileID: 8300000, guid: a05f2d944c7ed0e428fb5a28d9956072, type: 3}
     _volume: 0.7
